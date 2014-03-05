@@ -30,6 +30,26 @@ class schedule_model extends CI_Model{
     }
     
     function getSchedule(){
+        // Retrieve schedule data from user
+        $id = $this->session->userdata('userID');
+        $this->db->where('userID',$id);
+        $query = $this->db->get('schedule');
+        return $query->result();
+        
+        // check user data and display
+        $data = array(
+          $this->input->post('date') => 'date',
+          $this->inpurt->post('time') => 'time'
+        );
+        $user_schedule = $this->db->get('schedule',$data);
+        return $user_schedule;
+        
+        if ($id){
+            while ($user_schedule){
+                
+            }
+        }
+        
         
     }
     
